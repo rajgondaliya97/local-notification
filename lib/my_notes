@@ -1,0 +1,31 @@
+/// >>>  Add this Code in info.plist file :- IOS
+
+<key>UIBackgroundModes</key>
+<array>
+  <string>fetch</string>
+  <string>remote-notification</string>
+</array>
+
+
+/// >>>  Add this Code in AndroidManifest file :- Android
+
+   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+   <application
+       android:requestLegacyExternalStorage="true"
+       android:usesCleartextTraffic="true"
+       ... >
+       <!-- Required for notifications -->
+       <receiver
+           android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver"
+           android:exported="true" />
+
+       <receiver
+           android:name="com.dexterous.flutterlocalnotifications.NotificationDismissedReceiver"
+           android:exported="true" />
+
+       <receiver
+           android:name="com.dexterous.flutterlocalnotifications.NotificationBroadcastReceiver"
+           android:exported="true" />
+   </application>
+
